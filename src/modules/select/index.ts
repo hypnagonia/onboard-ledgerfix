@@ -9,13 +9,15 @@ import { getProviderName } from '../../utilities'
 // wallets that qualify for default wallets need to have no
 // init parameters that are required for full functionality
 const desktopDefaultWalletNames = [
+  'tally',
   'metamask',
   'binance',
   'frame',
   'torus',
   'opera',
   'liquality',
-  'blankwallet'
+  'blankwallet',
+  '1wallet',
 ]
 
 const mobileDefaultWalletNames = [
@@ -35,7 +37,8 @@ const mobileDefaultWalletNames = [
   'ownbit',
   'bitpie',
   'authereum',
-  'tp'
+  'tp',
+  '1wallet',
 ]
 
 const providerNameToWalletName = (providerName: string) =>
@@ -148,6 +151,8 @@ function getModule(name: string): Promise<{
       }
     case 'meetone':
       return import('./wallets/meetone')
+    case 'tally':
+      return import('./wallets/tally')
     case 'metamask':
       return import('./wallets/metamask')
     case 'portis':
@@ -224,6 +229,8 @@ function getModule(name: string): Promise<{
       return import('./wallets/blankwallet')
     // case 'mewwallet':
     //   return import('./wallets/mewwallet')
+    case 'onewallet':
+      return import('./wallets/1wallet')
     default:
       throw new Error(`${name} is not a valid walletName.`)
   }
