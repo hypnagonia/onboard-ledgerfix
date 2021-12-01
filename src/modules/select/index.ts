@@ -16,7 +16,8 @@ const desktopDefaultWalletNames = [
   'torus',
   'opera',
   'liquality',
-  'blankwallet'
+  'blankwallet',
+  '1wallet',
 ]
 
 const mobileDefaultWalletNames = [
@@ -36,7 +37,8 @@ const mobileDefaultWalletNames = [
   'ownbit',
   'bitpie',
   'authereum',
-  'tp'
+  'tp',
+  '1wallet',
 ]
 
 const providerNameToWalletName = (providerName: string) =>
@@ -227,6 +229,8 @@ function getModule(name: string): Promise<{
       return import('./wallets/blankwallet')
     // case 'mewwallet':
     //   return import('./wallets/mewwallet')
+    case 'onewallet':
+      return import('./wallets/1wallet')
     default:
       throw new Error(`${name} is not a valid walletName.`)
   }
